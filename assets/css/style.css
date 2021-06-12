@@ -3,9 +3,10 @@
 }
 
 :root {
-  --primary: #44e9ff;
-  --secondary: #497980;
-  --tertiary: rgb(192, 246, 253);
+  --primary: #351c75  ;
+  --secondary:rgb(241, 241, 241);
+  /* --secondary:  #44e9ff; */
+  --tertiary: rgb(26, 26, 26);
   --grey: #333;
   font-size: 62.5%;
 }
@@ -145,6 +146,7 @@ footer {
   position: relative;
   top: -3px;
   box-shadow: 0 3px var(--grey);
+  color: var(--secondary);
 }
 
 .btn:hover {
