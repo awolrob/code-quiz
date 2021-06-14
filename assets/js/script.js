@@ -14,7 +14,7 @@ var timerEl = document.querySelector('#timer');
 
 var aQuestions = [
   {
-    question: "Commonly used data types DO NOT include",
+    question: "Commonly used data types DO NOT include?",
     answers: {
       a: 'Strings',
       b: 'Booleans',
@@ -24,7 +24,67 @@ var aQuestions = [
     correctAnswer: 'c'
   },
   {
-    question: "The condition in an if / else statement is enclosed with _________ .",
+    question: "What are variables used for in JavaScript Programs?",
+    answers: {
+      a: 'Storing numbers, dates, or other values',
+      b: 'Varying randomly',
+      c: 'Causing high-school algebra flashbacks',
+      d: 'None of the above'
+    },
+    correctAnswer: 'a'
+  },
+  {
+    question: "Which of the following are capabilities of functions in JavaScript?",
+    answers: {
+      a: 'Return a value',
+      b: 'Accept parameters and Return a value',
+      c: 'Accept parameters',
+      d: 'None of the above'
+    },
+    correctAnswer: 'b'
+  },
+  {
+    question: "Which of the following is not a valid JavaScript variable name?",
+    answers: {
+      a: '2names',
+      b: '_first_and_last_names',
+      c: 'FirstAndLast',
+      d: 'None of the above'
+    },
+    correctAnswer: 'a'
+  },
+  {
+    question: "______ tag is an extension to HTML that can enclose any number of JavaScript statements.",
+    answers: {
+      a: '<SCRIPT>',
+      b: '<BODY>',
+      c: '<HEAD>',
+      d: '<TITLE>'
+    },
+    correctAnswer: 'a'
+  },
+  {
+    question: "What is the correct syntax for referring to an external script called ' abc.js'?",
+    answers: {
+      a: '<script href=" abc.js">',
+      b: '<script name=" abc.js">',
+      c: '<script src=" abc.js">',
+      d: 'None of the above'
+    },
+    correctAnswer: 'c'
+  },
+  {
+    question: "Which of the following is not considered a JavaScript operator?",
+    answers: {
+      a: 'new',
+      b: 'this',
+      c: 'delete',
+      d: 'typeof'
+    },
+    correctAnswer: 'c'
+  },
+  {
+    question: "The condition in an if / else statement is enclosed with _________ ?",
     answers: {
       a: 'quotes',
       b: 'curly brackets',
@@ -42,7 +102,7 @@ var aHighScores = [
   }
 ];
 
-var timeLeft = 25;
+var timeLeft = 35;
 var iScore = 0;
 var iQuestionCount = 0;
 
@@ -73,6 +133,7 @@ var checkAnswer = function (sAns) {
     timeLeft = timeLeft - 10;
     displayTimeLeft();
   }
+  // debugger;
   iQuestionCount++;
   fQuiz();
 }
@@ -83,12 +144,12 @@ var fQuiz = function () {
   var myTimer = function () {
     displayTimeLeft();
     timeLeft--;
-    if (timeLeft <= 0) {
+    if (timeLeft < 0) {
       allDone();
     }
   }
 
-  var quizTimer = setInterval(myTimer, 500);
+  var quizTimer = setInterval(myTimer, 1000);
 
   //Complete quiz and display results
   var allDone = function () {
@@ -98,8 +159,6 @@ var fQuiz = function () {
     sFinalScore.textContent = iScore;
   }
 
-
-  console.log('run quiz');
   if (iQuestionCount < aQuestions.length) {
     sQuestion.textContent = aQuestions[iQuestionCount].question;
     bAns1.textContent = aQuestions[iQuestionCount].answers.a;
