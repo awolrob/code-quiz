@@ -7,11 +7,16 @@ var finalScore = document.querySelector('#finalScore');
 var highScores = document.querySelector('#highScores');
 var timerEl = document.querySelector('#timer');
 
-// header.hidden = false;
-// quizSection.hidden = true;
-// finalScore.hidden = true;
-// highScores.hidden = true;
+var bStart = document.querySelector('#start-quiz');
+var sQuestion = document.querySelector('#question');
+var bAns1 = document.querySelector('#ans1');
+var bAns2 = document.querySelector('#ans2');
+var bAns3 = document.querySelector('#ans3');
+var bAns4 = document.querySelector('#ans4');
+var sResults = document.querySelector('#results');
+var sFinalScore = document.querySelector('#finalscore');
 
+// Questions
 var aQuestions = [
   {
     question: "Commonly used data types DO NOT include?",
@@ -95,6 +100,7 @@ var aQuestions = [
   }
 ];
 
+// Store local storage
 var aHighScores = [
   {
     initials: "",
@@ -102,28 +108,21 @@ var aHighScores = [
   }
 ];
 
-var timeLeft = 35;
+// Counters and constants 
+var timeLeft = 75;
 var iScore = 0;
 var iQuestionCount = 0;
 
-var bStart = document.querySelector('#start-quiz');
-var sQuestion = document.querySelector('#question');
-var bAns1 = document.querySelector('#ans1');
-var bAns2 = document.querySelector('#ans2');
-var bAns3 = document.querySelector('#ans3');
-var bAns4 = document.querySelector('#ans4');
-var sResults = document.querySelector('#results');
-var sFinalScore = document.querySelector('#finalscore');
-
-// Start quiz
+// Display time left
 var displayTimeLeft = function () {
   if (timeLeft < 0) {
     timeLeft = 0;
   }
   timerEl.textContent = timeLeft;
 }
-var checkAnswer = function (sAns) {
 
+// Check answer and count score
+var checkAnswer = function (sAns) {
   if (sAns === aQuestions[iQuestionCount].correctAnswer) {
     sResults.textContent = "Correct!"
     iScore++;
@@ -133,31 +132,20 @@ var checkAnswer = function (sAns) {
     timeLeft = timeLeft - 10;
     displayTimeLeft();
   }
-  // debugger;
+
   iQuestionCount++;
   fQuiz();
 }
 
+//Complete quiz and display results
+var allDone = function () {
+  timeLeft = 0;
+  displayTimeLeft;
+  sFinalScore.textContent = iScore;
+}
+
 // start the game / count down and 'loop' through questions
 var fQuiz = function () {
-  // start quiz timer
-  var myTimer = function () {
-    displayTimeLeft();
-    timeLeft--;
-    if (timeLeft < 0) {
-      allDone();
-    }
-  }
-
-  var quizTimer = setInterval(myTimer, 1000);
-
-  //Complete quiz and display results
-  var allDone = function () {
-    clearInterval(quizTimer);
-    timeLeft = 0;
-    displayTimeLeft;
-    sFinalScore.textContent = iScore;
-  }
 
   if (iQuestionCount < aQuestions.length) {
     sQuestion.textContent = aQuestions[iQuestionCount].question;
@@ -172,6 +160,17 @@ var fQuiz = function () {
 
 // Button Listeners
 bStart.addEventListener('click', function () {
+
+  // start quiz timer
+  var myTimer = function () {
+    displayTimeLeft();
+    timeLeft--;
+    if (timeLeft < 0) {
+      clearInterval(quizTimer);
+      allDone();
+    }
+  }
+  var quizTimer = setInterval(myTimer, 1000);
   fQuiz();
 });
 bAns1.addEventListener('click', function () {
