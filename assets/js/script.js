@@ -46,7 +46,6 @@ var timeLeft = 25;
 var iScore = 0;
 var iQuestionCount = 0;
 
-// Add Listeners
 var bStart = document.querySelector('#start-quiz');
 var sQuestion = document.querySelector('#question');
 var bAns1 = document.querySelector('#ans1');
@@ -54,6 +53,7 @@ var bAns2 = document.querySelector('#ans2');
 var bAns3 = document.querySelector('#ans3');
 var bAns4 = document.querySelector('#ans4');
 var sResults = document.querySelector('#results');
+var sFinalScore = document.querySelector('#finalscore');
 
 // Start quiz
 var checkAnswer = function (sAns) {
@@ -69,17 +69,26 @@ var checkAnswer = function (sAns) {
   fQuiz();
 }
 
-var myTimer = function () {
-  timerEl.textContent = timeLeft;
-  timeLeft--;
-  if (timeLeft <= 0) {
-    clearInterval(gameTimer);
-    allDone();
-  }
-}
+// start the game / count down and 'loop' through questions
 var fQuiz = function () {
-  debugger;
-  // var gameTimer = setInterval(myTimer, 500);
+  // start quiz timer
+  var myTimer = function () {
+    timerEl.textContent = timeLeft;
+    timeLeft--;
+    if (timeLeft <= 0) {
+      allDone();
+    }
+  }
+
+  var quizTimer = setInterval(myTimer, 250);
+
+  //Complete quiz and display results
+  var allDone = function () {
+    clearInterval(quizTimer);
+    sFinalScore.textContent = iScore;
+  }
+
+
   console.log('run quiz');
   if (iQuestionCount < aQuestions.length) {
     sQuestion.textContent = aQuestions[iQuestionCount].question;
@@ -88,28 +97,13 @@ var fQuiz = function () {
     bAns3.textContent = aQuestions[iQuestionCount].answers.c;
     bAns4.textContent = aQuestions[iQuestionCount].answers.d;
   } else {
-    return;
+    allDone();
   }
-
-  // display question
-  // wait for event listener
-
-
-  // start timer 03-Timers 02-addEventListener
-  // loop through questions while questions remain and timer > 0 05-True-or-False-Game
-  // record answers 05-True-or-False-Game
-  // all done - 
-  // list final score 
-  // record initals
-  // onSubmit - list high scores 04-localStorage 01-DOM-manipulation
-  //    bonus - go back to quiz again; clear high scores
 };
 
-// start the game / count down and loop through questions
-
+// Button Listeners
 bStart.addEventListener('click', function () {
   fQuiz();
-  allDone();
 });
 bAns1.addEventListener('click', function () {
   checkAnswer("a");
