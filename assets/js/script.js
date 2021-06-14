@@ -56,14 +56,22 @@ var sResults = document.querySelector('#results');
 var sFinalScore = document.querySelector('#finalscore');
 
 // Start quiz
+var displayTimeLeft = function () {
+  if (timeLeft < 0) {
+    timeLeft = 0;
+  }
+  timerEl.textContent = timeLeft;
+}
 var checkAnswer = function (sAns) {
+
   if (sAns === aQuestions[iQuestionCount].correctAnswer) {
     sResults.textContent = "Correct!"
     iScore++;
   } else {
     sResults.textContent = "Incorrect answer!"
     iScore--;
-    timeLeft = timeLeft - 20;
+    timeLeft = timeLeft - 10;
+    displayTimeLeft();
   }
   iQuestionCount++;
   fQuiz();
@@ -73,18 +81,20 @@ var checkAnswer = function (sAns) {
 var fQuiz = function () {
   // start quiz timer
   var myTimer = function () {
-    timerEl.textContent = timeLeft;
+    displayTimeLeft();
     timeLeft--;
     if (timeLeft <= 0) {
       allDone();
     }
   }
 
-  var quizTimer = setInterval(myTimer, 250);
+  var quizTimer = setInterval(myTimer, 500);
 
   //Complete quiz and display results
   var allDone = function () {
     clearInterval(quizTimer);
+    timeLeft = 0;
+    displayTimeLeft;
     sFinalScore.textContent = iScore;
   }
 
