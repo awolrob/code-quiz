@@ -13,8 +13,10 @@ var bAns1 = document.querySelector('#ans1');
 var bAns2 = document.querySelector('#ans2');
 var bAns3 = document.querySelector('#ans3');
 var bAns4 = document.querySelector('#ans4');
+var submitInitials = document.querySelector('#submitInitials');
 var sResults = document.querySelector('#results');
 var sFinalScore = document.querySelector('#finalscore');
+var initialInput = document.querySelector('#initials');
 
 // Questions
 var aQuestions = [
@@ -100,18 +102,36 @@ var aQuestions = [
   }
 ];
 
-// Store local storage
-var aHighScores = [
-  {
-    initials: "",
-    score: ""
+// Store local storage for sorting
+var aHighScores = [];
+// {
+//   score: ""
+//   initials: "",
+// }
+
+var saveScore = function () {
+  aHighScores.push({ score: iScore, initials: currentPlayerInit });
+  localStorage.setItem("scores", JSON.stringify(aHighScores));
+  aHighScores.sort(function (a, b) { return b.score - a.score })
+}
+
+var loadLocalScores = function () {
+  var savedScores = localStorage.getItem("scores");
+  if (!savedScores) {
+    return false;
   }
-];
+  savedScores = JSON.parse(savedScores);
+
+  for (var i = 0; i < savedScores.length; i++) {
+    aHighScores[i] = savedScores[i];
+  }
+};
 
 // Counters and constants 
-var timeLeft = 75;
+var timeLeft = 10;
 var iScore = 0;
 var iQuestionCount = 0;
+var currentPlayerInit = "";
 
 // Display time left
 var displayTimeLeft = function () {
@@ -184,4 +204,10 @@ bAns3.addEventListener('click', function () {
 });
 bAns4.addEventListener('click', function () {
   checkAnswer("d");
+});
+submitInitials.addEventListener('click', function (event) {
+  event.preventDefault();
+  currentPlayerInit = document.querySelector('#initials').value;
+  loadLocalScores();
+  saveScore();
 });

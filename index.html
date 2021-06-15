@@ -18,52 +18,52 @@
     <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
     <div class="form-group">
       <button class="btn" id="start-quiz">Start Quiz!</button>
-      <!-- <button class="btn" id="save-task" type="submit">Add Task</button> -->
     </div>
   </header>
   <!-- end Start Section -->
 
   <!-- Quiz / Timmer Section -->
   <main class="page-content" id="quizSection">
-    <h1>Timer: <span id="timer">0</span></h1>
-    <div>
-      <p id="question">Questions go here...</p>
+    <div class="page-content">
+      <h1>Timer: <span id="timer">0</span></h1>
+      <div>
+        <p id="question">Questions go here...</p>
+      </div>
+      <div class="task-list-wrapper">
+        <button class="btn" id="ans1">Lorem, ipsum dolor s</button>
+      </div>
+      <div class="task-list-wrapper">
+        <button class="btn" id="ans2">Ans 2</button>
+      </div>
+      <div class="task-list-wrapper">
+        <button class="btn" id="ans3">Ans 3</button>
+
+      </div>
+      <div class="task-list-wrapper">
+        <button class="btn" id="ans4">Ans 4</button>
+      </div>
+      <p id="results">Results go here...</p>
     </div>
-    <div class="task-list-wrapper">
-      <button class="btn" id="ans1">Lorem, ipsum dolor s</button>
-      <!-- <button class="btn" id="save-task" type="submit">Add Task</button> -->
-    </div>
-    <div class="task-list-wrapper">
-      <button class="btn" id="ans2">Ans 2</button>
-      <!-- <button class="btn" id="save-task" type="submit">Add Task</button> -->
-    </div>
-    <div class="task-list-wrapper">
-      <button class="btn" id="ans3">Ans 3</button>
-      <!-- <button class="btn" id="save-task" type="submit">Add Task</button> -->
-    </div>
-    <div class="task-list-wrapper">
-      <button class="btn" id="ans4">Ans 4</button>
-      <!-- <button class="btn" id="save-task" type="submit">Add Task</button> -->
-    </div>
-    <p id="results">Results go here...</p>
   </main>
   <!-- end Quiz / Timmer section -->
 
   <!-- Final Score Section -->
   <div class="page-content" id="finalScore">
-    <h2>All Done!</h2>
-    <p>Your final score is: </p>
-    <p id="finalscore">##</p>
+    <div class="page-content">
+      <h1>All Done!</h1>
+      <p>Your final score is <span id="finalscore">0</span></p>
+    </div>
+
     <div class="page-content">
       <form id="task-form">
         <div class="form-group">
           <p>Enter initials: </p>
         </div>
         <div class="form-group">
-          <input type="text" name="task-name" placeholder="" />
+          <input type="text" id="initials" name="task-name" placeholder="" />
         </div>
         <div class="form-group">
-          <button class="btn" id="save-task" type="submit">Submit</button>
+          <button class="btn" id="submitInitials" type="submit">Submit</button>
         </div>
       </form>
     </div>
@@ -71,17 +71,16 @@
   <!-- end Final Score Section -->
 
   <!-- High Score uList section -->
-  <section id="highScores" class="task-list-wrapper">
-    <h2 class="list-title">High scores:</h2>
-    <ul class="task-list" id="tasks-to-do">high-scores</ul>
-
-    <div class="form-group">
-      <button class="btn" id="save-task" type="submit">Go back</button>
-    </div>
-    <div class="form-group">
-      <button class="btn" id="save-task" type="submit">Clear high scores</button>
-    </div>
-  </section>
+  <div class="page-content">
+    <section id="highScores" class="task-list-wrapper">
+      <h2 class="list-title">High scores:</h2>
+      <ul class="task-list" id="tasks-to-do">high-scores</ul>
+      <div class="task-list-wrapper">
+        <button class="btn" id="save-task" type="submit">Go back</button>
+        <button class="btn" id="save-task" type="submit">Clear high scores</button>
+      </div>
+    </section>
+  </div>
   <!-- End High Score uList section -->
 
 

@@ -31,7 +31,7 @@ header {
 
 header p, body p{
   color: var(--tertiary);
-  margin: 5px 0 20px;
+  margin: 5px 0 5px;
   font-size: 2rem;
 }
 
@@ -54,7 +54,7 @@ form {
 form input {
   outline: none;
   border: none;
-  padding: 12px;
+  padding: 1px;
   width: 100%;
   font-size: 2.2rem;
   border: 2px solid var(--grey);
@@ -111,7 +111,7 @@ footer {
 
 .task-list {
   list-style: none;
-  padding: 15px;
+  padding: px;
   height: calc(100% - 50px);
   /* background: rgb(196, 196, 196); */
   border-radius: 12px;
@@ -155,7 +155,7 @@ footer {
   outline: none;
   border: none;
   display: inline-block;
-  padding: 10px 15px;
+  padding: 2px 15px;
   background: var(--primary);
   font-size: 2.2rem;
   border-radius: 12px;
@@ -238,7 +238,10 @@ footer {
   form .form-group {
     flex: 1 100%;
   }
-
+  .form-group p {
+    text-align: center;
+  }
+  
   form .form-group button {
     width: 100%;
   }
