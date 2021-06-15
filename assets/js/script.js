@@ -210,4 +210,29 @@ submitInitials.addEventListener('click', function (event) {
   currentPlayerInit = document.querySelector('#initials').value;
   loadLocalScores();
   saveScore();
+  var highScoreBody = document.querySelector('#highScores');
+  var favoriteEl = document.createElement('div');
+  var listEl = document.createElement('ol');
+  var li1 = document.createElement('li');
+  var li2 = document.createElement('li');
+  var li3 = document.createElement('li');
+  var li4 = document.createElement('li');
+  
+  favoriteEl.textContent = 'High Scores:';
+  li1.textContent = 'Chicken Fingers';
+  li2.textContent = 'Pizza';
+  li3.textContent = 'Burgers';
+  li4.textContent = 'Sushi';
+  
+  favoriteEl.setAttribute('style', 'font-size:20px;');
+  listEl.setAttribute('style', 'background: #888888; padding:20px;');
+  
+  highScoreBody.appendChild(favoriteEl);
+  favoriteEl.appendChild(listEl);
+  listEl.appendChild(li1);
+  listEl.appendChild(li2);
+  listEl.appendChild(li3);
+  listEl.appendChild(li4);
+  
+
 });
