@@ -1,22 +1,29 @@
 /* variables and array set up */
 
 /* DOM manipulation */
-var header = document.querySelector('#header');
-var quizSection = document.querySelector('#quizSection');
-var finalScore = document.querySelector('#finalScore');
-var highScores = document.querySelector('#highScores');
-var timerEl = document.querySelector('#timer');
+var header = document.getElementById('header');
+var quizSection = document.getElementById('quizSection');
+var finalScore = document.getElementById('finalScore');
+var highScores = document.getElementById('highScores');
+var doneButtons = document.getElementById('doneButtons');
+var timerEl = document.getElementById('timer');
 
-var bStart = document.querySelector('#start-quiz');
-var sQuestion = document.querySelector('#question');
-var bAns1 = document.querySelector('#ans1');
-var bAns2 = document.querySelector('#ans2');
-var bAns3 = document.querySelector('#ans3');
-var bAns4 = document.querySelector('#ans4');
-var submitInitials = document.querySelector('#submitInitials');
-var sResults = document.querySelector('#results');
-var sFinalScore = document.querySelector('#finalscore');
-var initialInput = document.querySelector('#initials');
+var bStart = document.getElementById('start-quiz');
+var sQuestion = document.getElementById('question');
+var bAns1 = document.getElementById('ans1');
+var bAns2 = document.getElementById('ans2');
+var bAns3 = document.getElementById('ans3');
+var bAns4 = document.getElementById('ans4');
+var submitInitials = document.getElementById('submitInitials');
+var sResults = document.getElementById('results');
+var sFinalScore = document.getElementById('finalscore');
+var initialInput = document.getElementById('initials');
+
+header.style.display = "";
+quizSection.style.display = "none";
+finalScore.style.display = "none";
+highScores.style.display = "none";
+doneButtons.style.display = "none";
 
 // Questions
 var aQuestions = [
@@ -159,14 +166,35 @@ var checkAnswer = function (sAns) {
 
 //Complete quiz and display results
 var allDone = function () {
+  quizSection.style.display = "none";
+  finalScore.style.display = "";
+
   timeLeft = 0;
   displayTimeLeft;
   sFinalScore.textContent = iScore;
 }
+var fListHighScores = function () {
+  var highScoreBody = document.querySelector('#highScores');
+  var list = document.createElement('ol');
+  list.textContent = "High Scores:"
+  list.setAttribute("class", "list-title");
+  highScoreBody.appendChild(list);
+  // var listItem = document.createElement('li');
+  // highScoreBody.innerHTML = "<ol class='task-list-wrapper'>High Scores</ol>";
+  // highScoreBody.innerHTML = "<li id='highScoreList'>High Scores</li>";
+  for (i = 0; i < aHighScores.length; i++) {
+    var listItem = document.createElement('li');
+    listItem.textContent = aHighScores[i].initials + " : " + aHighScores[i].score;
+    listItem.setAttribute("class", "list-title");
+    listItem.setAttribute("id", "highScoreList")
+    list.appendChild(listItem);
+  };
+}
 
 // start the game / count down and 'loop' through questions
 var fQuiz = function () {
-
+  header.style.display = "none";
+  quizSection.style.display = "";
   if (iQuestionCount < aQuestions.length) {
     sQuestion.textContent = aQuestions[iQuestionCount].question;
     bAns1.textContent = aQuestions[iQuestionCount].answers.a;
@@ -207,32 +235,20 @@ bAns4.addEventListener('click', function () {
 });
 submitInitials.addEventListener('click', function (event) {
   event.preventDefault();
+  finalScore.style.display = "none";
+  highScores.style.display = "";
+  doneButtons.style.display = "";
+
   currentPlayerInit = document.querySelector('#initials').value;
   loadLocalScores();
   saveScore();
-  var highScoreBody = document.querySelector('#highScores');
-  var favoriteEl = document.createElement('div');
-  var listEl = document.createElement('ol');
-  var li1 = document.createElement('li');
-  var li2 = document.createElement('li');
-  var li3 = document.createElement('li');
-  var li4 = document.createElement('li');
-  
-  favoriteEl.textContent = 'High Scores:';
-  li1.textContent = 'Chicken Fingers';
-  li2.textContent = 'Pizza';
-  li3.textContent = 'Burgers';
-  li4.textContent = 'Sushi';
-  
-  favoriteEl.setAttribute('style', 'font-size:20px;');
-  listEl.setAttribute('style', 'background: #888888; padding:20px;');
-  
-  highScoreBody.appendChild(favoriteEl);
-  favoriteEl.appendChild(listEl);
-  listEl.appendChild(li1);
-  listEl.appendChild(li2);
-  listEl.appendChild(li3);
-  listEl.appendChild(li4);
-  
 
+  fListHighScores();
+});
+goBack.addEventListener('click', function () {
+  location.reload(true);
+});
+clearHighScores.addEventListener('click', function () {
+  localStorage.removeItem("scores");
+  location.reload(true);
 });
