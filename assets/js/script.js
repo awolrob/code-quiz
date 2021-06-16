@@ -25,7 +25,7 @@ finalScore.style.display = "none";
 highScores.style.display = "none";
 doneButtons.style.display = "none";
 
-// Questions
+// Questions 
 var aQuestions = [
   {
     question: "Commonly used data types DO NOT include?",
