@@ -135,7 +135,7 @@ var loadLocalScores = function () {
 };
 
 // Counters and constants 
-var timeLeft = 10;
+var timeLeft = 75;
 var iScore = 0;
 var iQuestionCount = 0;
 var currentPlayerInit = "";
