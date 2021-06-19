@@ -42,4 +42,4 @@ Wants to take a timed quiz on JavaScript fundamentals that stores high scores SO
 ![code quiz](./assets/images/04-web-apis-homework-demo.gif)
 
 - - -
-` https://github.com/awolrob | 2021-06-06 `  :+1:
+` https://github.com/awolrob | 2021-06-19 `  :+1:
