@@ -5,7 +5,6 @@
 :root {
   --primary: #351c75;
   --secondary: rgb(241, 241, 241);
-  /* --secondary:  #44e9ff; */
   --tertiary: rgb(26, 26, 26);
   --grey: #333;
 }
@@ -150,15 +149,6 @@ footer {
 }
 
 @media screen and (max-width: 980px) {
-  form .form-group {
-    flex: 1 100%;
-  }
-  .form-group p {
-    text-align: center;
-  }
-  form .form-group button {
-    width: 100%;
-  }
   .list-wrapper {
     flex-basis: 100%;
   }
