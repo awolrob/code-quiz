@@ -39,6 +39,8 @@ Wants to take a timed quiz on JavaScript fundamentals that stores high scores SO
 
 The application should function as follows:
 
-![code quiz](./Assets/images/04-web-apis-homework-demo.gif)
+![code quiz](./assets/images/04-web-apis-homework-demo.gif)
+![Before](./assets/images/Before-01-html-css-git-homework-demo.png) 
+
 - - -
 ` https://github.com/awolrob | 2021-06-06 `  :+1:
