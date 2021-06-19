@@ -37,10 +37,9 @@ Wants to take a timed quiz on JavaScript fundamentals that stores high scores SO
 5. WHEN the game is over THEN I can save my initials and score
 - Ref: CWRU Module 4 Taskinator
 
-The application should function as follows:
+**The application should function as follows:**
 
 ![code quiz](./assets/images/04-web-apis-homework-demo.gif)
-![Before](./assets/images/Before-01-html-css-git-homework-demo.png) 
 
 - - -
 ` https://github.com/awolrob | 2021-06-06 `  :+1:
