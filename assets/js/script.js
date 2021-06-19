@@ -1,5 +1,3 @@
-/* variables and array set up */
-
 /* DOM manipulation */
 var header = document.getElementById('header');
 var quizSection = document.getElementById('quizSection');
@@ -17,7 +15,6 @@ var bAns4 = document.getElementById('ans4');
 var submitInitials = document.getElementById('submitInitials');
 var sResults = document.getElementById('results');
 var sFinalScore = document.getElementById('finalscore');
-var initialInput = document.getElementById('initials');
 
 header.style.display = "";
 quizSection.style.display = "none";
@@ -55,7 +52,7 @@ var aQuestions = [
       c: 'Accept parameters',
       d: 'None of the above'
     },
-    correctAnswer: 'b'
+    correctAnswer: 'c'
   },
   {
     question: "Which of the following is not a valid JavaScript variable name?",
@@ -82,7 +79,7 @@ var aQuestions = [
     answers: {
       a: '<script href=" abc.js">',
       b: '<script name=" abc.js">',
-      c: '<script src=" abc.js">',
+      c: '<script src="abc.js">',
       d: 'None of the above'
     },
     correctAnswer: 'c'
@@ -116,6 +113,12 @@ var aHighScores = [];
 //   initials: "",
 // }
 
+// Counters and constants 
+var timeLeft = 75;
+var iScore = 0;
+var iQuestionCount = 0;
+var currentPlayerInit = "";
+
 var saveScore = function () {
   aHighScores.push({ score: iScore, initials: currentPlayerInit });
   localStorage.setItem("scores", JSON.stringify(aHighScores));
@@ -133,12 +136,6 @@ var loadLocalScores = function () {
     aHighScores[i] = savedScores[i];
   }
 };
-
-// Counters and constants 
-var timeLeft = 75;
-var iScore = 0;
-var iQuestionCount = 0;
-var currentPlayerInit = "";
 
 // Display time left
 var displayTimeLeft = function () {
@@ -173,15 +170,13 @@ var allDone = function () {
   displayTimeLeft;
   sFinalScore.textContent = iScore;
 }
+
 var fListHighScores = function () {
   var highScoreBody = document.querySelector('#highScores');
   var list = document.createElement('ol');
   list.textContent = "High Scores:"
   list.setAttribute("class", "list-title");
   highScoreBody.appendChild(list);
-  // var listItem = document.createElement('li');
-  // highScoreBody.innerHTML = "<ol class='task-list-wrapper'>High Scores</ol>";
-  // highScoreBody.innerHTML = "<li id='highScoreList'>High Scores</li>";
   for (i = 0; i < aHighScores.length; i++) {
     var listItem = document.createElement('li');
     listItem.textContent = aHighScores[i].initials + " : " + aHighScores[i].score;
@@ -206,7 +201,7 @@ var fQuiz = function () {
   }
 };
 
-// Button Listeners
+// Listeners
 bStart.addEventListener('click', function () {
 
   // start quiz timer
@@ -221,6 +216,7 @@ bStart.addEventListener('click', function () {
   var quizTimer = setInterval(myTimer, 1000);
   fQuiz();
 });
+
 bAns1.addEventListener('click', function () {
   checkAnswer("a");
 });
@@ -233,6 +229,7 @@ bAns3.addEventListener('click', function () {
 bAns4.addEventListener('click', function () {
   checkAnswer("d");
 });
+
 submitInitials.addEventListener('click', function (event) {
   event.preventDefault();
   finalScore.style.display = "none";
@@ -245,9 +242,11 @@ submitInitials.addEventListener('click', function (event) {
 
   fListHighScores();
 });
+
 goBack.addEventListener('click', function () {
   location.reload(true);
 });
+
 clearHighScores.addEventListener('click', function () {
   localStorage.removeItem("scores");
   location.reload(true);

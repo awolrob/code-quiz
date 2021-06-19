@@ -8,7 +8,6 @@
   /* --secondary:  #44e9ff; */
   --tertiary: rgb(26, 26, 26);
   --grey: #333;
-  font-size: 62.5%;
 }
 
 body {
@@ -25,7 +24,6 @@ body {
 header {
   background: var(--secondary);
   padding: 30px 25px;
-  border-bottom: 5px solid var(--primary);
   text-align: center;
 }
 
@@ -35,8 +33,7 @@ header p, body p {
   font-size: 2rem;
 }
 
-.question, .results {
-  text-align: center;
+#question, #results {
   padding: 30px 25px;
 }
 
@@ -97,7 +94,7 @@ footer {
   width: 60%;
 }
 
-.task-list-wrapper {
+.list-wrapper {
   flex: 1;
   margin: 0 20px 20px;
 }
@@ -112,41 +109,8 @@ footer {
   margin: 10px;
   height: calc(100% - 50px);
   background: rgb(196, 196, 196);
-  /* border-radius: 12px; */
-  /* border: 2px solid var(--tertiary); */
   text-align: left;
   font-size: 2.6rem;
-}
-
-.task-item {
-  color: var(--tertiary);
-  padding: 15px 15px;
-  border: 2px solid var(--grey);
-  background: var(--tertiary);
-  border-radius: 12px;
-  margin-bottom: 20px;
-}
-
-.task-name {
-  margin: 0;
-  font-size: 1.8rem;
-}
-
-.task-type {
-  color: var(--secondary);
-  font-size: 1.55rem;
-}
-
-.task-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 10px 0 5px 0;
-  justify-content: space-between;
-}
-
-.task-actions button, .task-actions select {
-  flex: 1;
 }
 
 .btn {
@@ -173,59 +137,16 @@ footer {
   top: 0;
 }
 
-.edit-btn, .delete-btn {
-  font-size: 1.4rem;
-  padding: 5px 7px;
-  margin: 3px;
-  background: var(--secondary);
-  color: #fff;
-}
-
-.select-dropdown, .select-status {
-  display: block;
-  font-size: 2.2rem;
-  color: #444;
-  padding: 12px;
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  border: 2px solid var(--grey);
-  border-radius: 12px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #fff;
-  background-image: url("../images/select-arrow.svg");
-  background-repeat: no-repeat, repeat;
-  background-position: right 0.7em top 50%, 0 0;
-  background-size: 0.65em auto, 100%;
-}
-
-.select-status {
-  font-size: 1.4rem;
-  padding: 4px 28px 4px 4px;
-  width: auto;
-}
-
-.select-dropdown::-ms-expand, .select-status::-ms-expand {
-  display: none;
-}
-
-.select-dropdown:hover, .select-status:hover {
-  border-color: #888;
-}
-
-.select-dropdown:focus, .select-status:focus {
-  border-color: #aaa;
-  box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
-  box-shadow: 0 0 0 3px -moz-mac-focusring;
-  color: #222;
-  outline: none;
-}
-
-.select-dropdown option, .select-status option {
-  font-weight: normal;
-  font-size: 2rem;
+@media screen and (max-width: 1200px) {
+  form .form-group {
+    flex: 1 100%;
+  }
+  .form-group p {
+    text-align: center;
+  }
+  form .form-group button {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 980px) {
@@ -238,7 +159,7 @@ footer {
   form .form-group button {
     width: 100%;
   }
-  .task-list-wrapper {
+  .list-wrapper {
     flex-basis: 100%;
   }
 }
